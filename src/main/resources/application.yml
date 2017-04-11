@@ -1,0 +1,20 @@
+server:
+  port: 9411
+
+
+
+zipkin.store.type: mem
+
+spring:
+  cloud:
+    config:
+      profile: ${config.profile:docker} # profile
+      name: log_queue,sleuth_queue        # 配置文件
+
+  rabbitmq:
+    host: ${sleuth.spring.rabbitmq.host:localhost}
+    port: ${sleuth.spring.rabbitmq.port:5672}
+    username: ${sleuth.spring.rabbitmq.username:guest}
+    password: ${sleuth.spring.rabbitmq.password:guest}
+
+logging.file: ${spring.application.name}.log
